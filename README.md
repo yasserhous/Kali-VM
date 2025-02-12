@@ -1,6 +1,6 @@
 # malware_analysis_lab
 # sources:
-# Network Chuk how to build a HACKING lab : https://www.youtube.com/watch?v=mvsiuLzpx2E 
+# Network Chuck how to build a HACKING lab : https://www.youtube.com/watch?v=mvsiuLzpx2E 
 A learning project to run and analyze malware in a safe environment
 
 Creating a safe hacking environment
