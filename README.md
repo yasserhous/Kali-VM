@@ -12,7 +12,13 @@ I faced multiple technical challenges and resolved them through troubleshooting,
 #### 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment.
 #### 1.2) Run the installer. For the purpose of this lab, you can install using the default settings.
 ### 2) Install Kali Linux distribution
-visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab.
+#### 2.1) visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab.
+#### 2.2) unzip the package at the location of your choice, but note that location as the kali linux operating systemp will be added to your VirtualBox
+### 3) Ensure your Kali Linux download is the correct file by comparing the hash of your vdi file with the hash provided on the website
+####3.2) open Powershell on your windows and write the following command: Get-FileHash "[path to your vdi file].vdi" -Algorithm SHA256. The terminal will output a long hash value. this value should be compared to the checksum value on your Kali linux --> see image below:
+![image](https://github.com/user-attachments/assets/3490aa5b-dd69-4022-84dc-19ac5b2822f2)
+
+
 
 Creating a safe hacking environment
 You would want to make sure you create a safe environment to since we will be working with real vulnerabilities. This project can go smoother with some basic knowledge of virtual machines and kali-linux. I highly recommend watching Network Chuck content.
