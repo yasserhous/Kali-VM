@@ -15,8 +15,11 @@ I faced multiple technical challenges and resolved them through troubleshooting,
 #### 2.1) visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab.
 #### 2.2) unzip the package at the location of your choice, but note that location as the kali linux operating systemp will be added to your VirtualBox
 ### 3) Ensure your Kali Linux download is the correct file by comparing the hash of your vdi file with the hash provided on the website
-####3.2) open Powershell on your windows and write the following command: Get-FileHash "[path to your vdi file].vdi" -Algorithm SHA256. The terminal will output a long hash value. this value should be compared to the checksum value on your Kali linux --> see image below:
-![image](https://github.com/user-attachments/assets/3490aa5b-dd69-4022-84dc-19ac5b2822f2)
+#### 3.2) open Powershell on your windows and write the following command: Get-FileHash "[path to your vdi file].vdi" -Algorithm SHA256. The terminal will output a long hash value. this value should be compared to the checksum value on your Kali linux --> see image below:
+![image](https://github.com/user-attachments/assets/e387ffb6-f5cc-4220-8e3c-9fb6132bef03)
+#### 3.3) Follow the Kali Linux documentation to add the operating system https://www.kali.org/docs/virtualization/import-premade-virtualbox/
+### 4) Setup the host only network 
+### 5)verify that your vm is setup properly.
 
 
 
