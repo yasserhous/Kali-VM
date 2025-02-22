@@ -2,16 +2,16 @@
 
 
 # Secure Kali VM
-# # OVERVIEW
+## OVERVIEW
 I successfully built a secure and isolated Kali Linux VM inside VirtualBox to serve as a safe environment for penetration testing and malware analysis.
 This project involved configuring network isolation, enforcing firewall rules, and enabling secure file transfers between the host and VM.
 I faced multiple technical challenges and resolved them through troubleshooting, Linux networking, and firewall management.
 
-# # Step By Step Setup
-# # # 1) Install VirtualBox
-# # # # 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment.
-# # # # 1.2) Run the installer. For the purpose of this lab, you can install using the default settings.
-# # # 2) Install Kali Linux distribution
+## Step By Step Setup
+### 1) Install VirtualBox
+#### 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment.
+#### 1.2) Run the installer. For the purpose of this lab, you can install using the default settings.
+### 2) Install Kali Linux distribution
 visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab.
 
 Creating a safe hacking environment
