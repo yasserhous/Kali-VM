@@ -1,12 +1,18 @@
-// malware_analysis_lab
-// sources:
-// Network Chuck how to build a HACKING lab : https://www.youtube.com/watch?v=mvsiuLzpx2E 
-// A learning project to run and analyze malware in a safe environment
+
+
+
 # Secure Kali VM
 # # OVERVIEW
 I successfully built a secure and isolated Kali Linux VM inside VirtualBox to serve as a safe environment for penetration testing and malware analysis.
 This project involved configuring network isolation, enforcing firewall rules, and enabling secure file transfers between the host and VM.
 I faced multiple technical challenges and resolved them through troubleshooting, Linux networking, and firewall management.
+
+# # Step By Step Setup
+# # # 1) Install VirtualBox
+# # # # 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment.
+# # # # 1.2) Run the installer. For the purpose of this lab, you can install using the default settings.
+# # # 2) Install Kali Linux distribution
+visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab.
 
 Creating a safe hacking environment
 You would want to make sure you create a safe environment to since we will be working with real vulnerabilities. This project can go smoother with some basic knowledge of virtual machines and kali-linux. I highly recommend watching Network Chuck content.
@@ -28,4 +34,5 @@ As you notice, no Host Network Manager
 
 At that moment, I realized my issue might very well be the virtualbox installation. I removed virtual box completely, and reinstalled it, and then I was finally able to see the network options. I still could bot find the  file --> Host Network Manager, but I found the Tools --> Properties options which contained everything I needed
 
-
+sources:
+Network Chuck how to build a HACKING lab : https://www.youtube.com/watch?v=mvsiuLzpx2E 
