@@ -21,6 +21,9 @@ I faced multiple technical challenges and resolved them through troubleshooting,
 ### 4) Setup the host only network 
 ### 5)verify that your vm is setup properly.
 
+## Troubling Shooting
+## Lessons Learned
+
 
 
 Creating a safe hacking environment
