@@ -46,5 +46,10 @@ As you notice, no Host Network Manager
 
 At that moment, I realized my issue might very well be the virtualbox installation. I removed virtual box completely, and reinstalled it, and then I was finally able to see the network options. I still could bot find the  file --> Host Network Manager, but I found the Tools --> Properties options which contained everything I needed
 
+Commands used:
+To host files from host to VM
+1) locate folder where the files you want to share are stored
+2) open command prompt and run python -m http.server 8080 ( you need to have python installed)
+3) on the VM open terminal and run: wget http://192.168.56.1:8080/yourfile.txt
 sources:
 Network Chuck how to build a HACKING lab : https://www.youtube.com/watch?v=mvsiuLzpx2E 
