@@ -7,6 +7,8 @@ I successfully built a secure and isolated Kali Linux VM inside VirtualBox to se
 This project involved configuring network isolation, enforcing firewall rules, and enabling secure file transfers between the host and VM.
 I faced multiple technical challenges and resolved them through troubleshooting, Linux networking, and firewall management.
 
+Ultimately, the final test would be to execute some malware on my virtual machine, and cross my fingers that the setup was done properly
+
 ## Step By Step Setup
 ### 1) Install VirtualBox
 #### 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment.
