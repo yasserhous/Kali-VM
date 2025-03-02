@@ -1,7 +1,7 @@
 
 
 
-# Secure Kali VM
+# Secure Virtual Envrionment for Malware analysis
 ## OVERVIEW
 I successfully built a secure and isolated Kali Linux VM inside VirtualBox to serve as a safe environment for penetration testing and malware analysis.
 This project involved configuring network isolation, enforcing firewall rules, and enabling secure file transfers between the host and VM.
