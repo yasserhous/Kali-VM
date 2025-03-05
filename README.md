@@ -17,7 +17,12 @@ What I needed to do is find a malware that can infect a linux-based system(since
 
 I found an interesting type of command that can crash my linux system: :(){ :|:& };:
 
-This code is called a fork bomb. 
+This code is called a fork bomb. Fork bombs are a type DOS attack(Denial of Service) . 
+Leverages Linux's concept called forking. essentially will create an inifite amount of copies of a program. It will then exhaust all the resources of a computer. 
+
+I ran my first fork bomb ! Here is a clip of how it looked:
+
+
 
 
 
@@ -82,3 +87,4 @@ To host files from host to VM
 
 sources:
 Network Chuck how to build a HACKING lab : https://www.youtube.com/watch?v=mvsiuLzpx2E 
+Fork Bomb: https://www.youtube.com/watch?v=RhtjGp7oMvE
