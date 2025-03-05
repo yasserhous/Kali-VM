@@ -9,6 +9,18 @@ I faced multiple technical challenges and resolved them through troubleshooting,
 
 Ultimately, the final test would be to execute some malware on my virtual machine, and cross my fingers that the setup was done properly
 
+It look me some time to finalize the host only network setup for my virtualbox because I ran into some configuration issues(see troubleshooting steps), but eventually I was able to set it up such as 1) my VM can communicate with my host and I can share a file(so I can share the malware zip), and 2) my VM cannot access the internet. 
+
+Then I needed to find tutorials that demonstrate the execution of a malware on a virtual machine. I did not find many resources online, but I did find a website I can download real malware samples: https://bazaar.abuse.ch/browse/
+
+What I needed to do is find a malware that can infect a linux-based system(since this was what I was running on my VM), and that I can later analyze it.
+
+I found an interesting type of command that can crash my linux system: :(){ :|:& };:
+
+This code is called a fork bomb. 
+
+
+
 ## Step By Step Setup
 ### 1) Install VirtualBox
 #### 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment.
