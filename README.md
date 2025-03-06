@@ -1,4 +1,4 @@
-
+*DISCLOSURE* This repository is currently in progress. I use it to document my progress. 
 
 
 # Secure Virtual Envrionment for Malware analysis
@@ -11,16 +11,13 @@ Ultimately, the final test would be to execute some malware on my virtual machin
 
 It look me some time to finalize the host only network setup for my virtualbox because I ran into some configuration issues(see troubleshooting steps), but eventually I was able to set it up such as 1) my VM can communicate with my host and I can share a file(so I can share the malware zip), and 2) my VM cannot access the internet. 
 
-Then I needed to find tutorials that demonstrate the execution of a malware on a virtual machine. I did not find many resources online, but I did find a website I can download real malware samples: https://bazaar.abuse.ch/browse/
+Then I needed to find tutorials that demonstrate the execution of a malware on a virtual machine. I did not find many resources online, but I did find a website I can download real malware samples: https://bazaar.abuse.ch/browse/. For this first lab, I decided to go for a fork bomb A.K.A rabbit virus. Fork bombs are a type DOS attack(Denial of Service) Leverages Linux's concept called forking because each function call spawns two additional processes and it does that exponentially. A fork bomb crashes the system by exhausting the its resources. the operating system because overwhelmed with all the processes created by the program and can no longer respond.
 
-What I needed to do is find a malware that can infect a linux-based system(since this was what I was running on my VM), and that I can later analyze it.
+To visualize it, we will write the function inside an executable, followed by some drama by having a pop up that says " Gotcha ! you're system will crash now " 
 
-I found an interesting type of command that can crash my linux system: :(){ :|:& };:
 
-This code is called a fork bomb. Fork bombs are a type DOS attack(Denial of Service) . 
-Leverages Linux's concept called forking. essentially will create an inifite amount of copies of a program. It will then exhaust all the resources of a computer. 
 
-I ran my first fork bomb ! Here is a clip of how it looked:
+
 
 
 
@@ -52,6 +49,18 @@ error: From 192.168.56.101 icmp_seq=3 Destination Host Unreachable
 5)go to tools --> Host-Only Networks and ensure that the IP assigned to your adapter is the same as the one to your host:
 ![image](https://github.com/user-attachments/assets/941e3480-14ef-4d9e-bc00-f3af70801006)
 
+### 6) write the shell script for the fork bomb
+1)create a new file on linux and write down the following script:
+<code>
+# Show a warning message using notify-send
+notify-send "Gotcha ! Your system will stop responding soon."
+# Introduce a short delay
+sleep 3
+# Start the Fork Bomb
+:(){ :|:& };:
+</code>
+2) save the file
+3)make the file executabe
 
 
 ## Lessons Learned
