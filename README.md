@@ -16,13 +16,6 @@ Then I needed to find tutorials that demonstrate the execution of a malware on a
 To visualize it, we will write the function inside an executable, followed by some drama by having a pop up that says " Gotcha ! you're system will crash now " 
 
 
-
-
-
-
-
-
-
 ## Step By Step Setup
 ### 1) Install VirtualBox
 #### 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment.
@@ -35,19 +28,25 @@ To visualize it, we will write the function inside an executable, followed by so
 ![image](https://github.com/user-attachments/assets/e387ffb6-f5cc-4220-8e3c-9fb6132bef03)
 #### 3.3) Follow the Kali Linux documentation to add the operating system https://www.kali.org/docs/virtualization/import-premade-virtualbox/
 ### 4) Setup the host only network 
-### 5)verify that your vm is setup properly.
+### 5) verify that your vm is setup properly.
+
+### Running the Fork Bomb
+
 
 ## Troubling Shooting
-Ensuring VM can reach Host, and host can reach VM
+1)Ensuring VM can reach Host, and host can reach VM
 error: From 192.168.56.101 icmp_seq=3 Destination Host Unreachable
-1) check your network adapter and ensure that the one you want to use is enabled: Control Panel\All Control Panel Items\Network Connections
-2) ![image](https://github.com/user-attachments/assets/81c83f81-efc4-4355-ad9e-6ac3c8c76bc5)
-3)ensure that the VM network adapter chosen is the right one:
-![image](https://github.com/user-attachments/assets/e5b4609a-113d-4e94-9b9a-7380da1121fe)
-4)run command ip a on your VM terminal and make sure your eth0 on the VM  shows :
-![image](https://github.com/user-attachments/assets/9baf824d-05ff-4853-8dce-2277b52ec4ed)
-5)go to tools --> Host-Only Networks and ensure that the IP assigned to your adapter is the same as the one to your host:
-![image](https://github.com/user-attachments/assets/941e3480-14ef-4d9e-bc00-f3af70801006)
+  1) check your network adapter and ensure that the one you want to use is enabled: Control Panel\All Control Panel Items\Network Connections
+  2) ![image](https://github.com/user-attachments/assets/81c83f81-efc4-4355-ad9e-6ac3c8c76bc5)
+  3)ensure that the VM network adapter chosen is the right one:
+  ![image](https://github.com/user-attachments/assets/e5b4609a-113d-4e94-9b9a-7380da1121fe)
+  4)run command ip a on your VM terminal and make sure your eth0 on the VM  shows :
+  ![image](https://github.com/user-attachments/assets/9baf824d-05ff-4853-8dce-2277b52ec4ed)
+  5)go to tools --> Host-Only Networks and ensure that the IP assigned to your adapter is the same as the one to your host:
+  ![image](https://github.com/user-attachments/assets/941e3480-14ef-4d9e-bc00-f3af70801006)
+
+2)Changing the double click behavior on Linux.
+  1) It took me maybe a few hours to figure that one out since when I was double-clicking, the file was opening with vim. I ended up changing the default application used by going to open-with --> dbus-launch. This forced the OS to launch a new D-bus session which allows the execution of the script.
 
 ### 6) write the shell script for the fork bomb
 1)create a new file on linux and write down the following script:
