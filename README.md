@@ -30,7 +30,9 @@ To visualize it, we will write the function inside an executable, followed by so
 ### 4) Setup the host only network 
 ### 5) verify that your vm is setup properly.
 
-### Running the Fork Bomb
+## Running the Fork Bomb
+### 1) Create a new file on Linux and write the following code:
+
 
 
 ## Troubling Shooting
