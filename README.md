@@ -15,6 +15,7 @@ Then I needed to find tutorials that demonstrate the execution of a malware on a
 
 To visualize it, we will write the function inside an executable, followed by some drama by having a pop up that says " Gotcha ! you're system will crash now " 
 
+![forkbomb](https://github.com/user-attachments/assets/d53f5be5-563d-42fc-8301-d20f8435b0f3)
 
 ## Step By Step Setup
 ### 1) Install VirtualBox
