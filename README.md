@@ -40,14 +40,14 @@ https://github.com/yasserhous/Kali-VM/blob/e39436b2335a17c2e605a32b0fd412f73441a
 ## Troubling Shooting
 ### Ensuring VM can reach Host, and host can reach VM
 error: From 192.168.56.101 icmp_seq=3 Destination Host Unreachable
-  1) check your network adapter and ensure that the one you want to use is enabled: Control Panel\All Control Panel Items\Network Connections
-    ![image](https://github.com/user-attachments/assets/81c83f81-efc4-4355-ad9e-6ac3c8c76bc5)
-  2)ensure that the VM network adapter chosen is the right one:
-  ![image](https://github.com/user-attachments/assets/e5b4609a-113d-4e94-9b9a-7380da1121fe)
-  3)run command ip a on your VM terminal and make sure your eth0 on the VM  shows :
-  ![image](https://github.com/user-attachments/assets/9baf824d-05ff-4853-8dce-2277b52ec4ed)
-  4)go to tools --> Host-Only Networks and ensure that the IP assigned to your adapter is the same as the one to your host:
-  ![image](https://github.com/user-attachments/assets/941e3480-14ef-4d9e-bc00-f3af70801006)
+  1) check your network adapter and ensure that the one you want to use is enabled: Control Panel\All Control Panel Items\Network Connections \n
+    ![image](https://github.com/user-attachments/assets/81c83f81-efc4-4355-ad9e-6ac3c8c76bc5) \n
+  2)ensure that the VM network adapter chosen is the right one:\n
+  ![image](https://github.com/user-attachments/assets/e5b4609a-113d-4e94-9b9a-7380da1121fe)  \n
+  3)run command ip a on your VM terminal and make sure your eth0 on the VM  shows \n
+  ![image](https://github.com/user-attachments/assets/9baf824d-05ff-4853-8dce-2277b52ec4ed) \n
+  4)go to tools --> Host-Only Networks and ensure that the IP assigned to your adapter is the same as the one to your host: \n
+  ![image](https://github.com/user-attachments/assets/941e3480-14ef-4d9e-bc00-f3af70801006) \n
 
 ### Changing the double click behavior on Linux.
   1) It took me maybe a few hours to figure that one out since when I was double-clicking, the file was opening with vim. I ended up changing the default application used by going to open-with --> dbus-launch. This forced the OS to launch a new D-bus session which allows the execution of the script.
