@@ -32,7 +32,7 @@ To visualize it, we will write the function inside an executable, followed by so
 
 ## Running the Fork Bomb
 ### 1) Create a new file on Linux and write the following code:
-https://github.com/yasserhous/Kali-VM/blob/e95a94cdb92b2bf38a6feedf5892a2b35c9eb456/forkbomb.sh#L1C1-L10C14
+https://github.com/yasserhous/Kali-VM/blob/e39436b2335a17c2e605a32b0fd412f73441a6ea/forkbomb.sh#L1C1-L10C14
 
 
 ## Troubling Shooting
