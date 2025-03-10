@@ -58,62 +58,23 @@ image 3
 ![image](https://github.com/user-attachments/assets/bd3380f5-d98a-46ea-a593-a8edeb233eca) <br/>
 
 ## Running the Fork Bomb
-### 1) Create a new file on Linux and write the following code:
+### 5) Create a new file on Linux and write the following code:
 
 https://github.com/yasserhous/Kali-VM/blob/e39436b2335a17c2e605a32b0fd412f73441a6ea/forkbomb.sh#L1-L10
 
 
 ## Troubleshooting
 
-### When trying to find the file hash for the Kali vdi file, I was not able to CD into the directory
-I searched and found that when a folder has a space in it on windows, it needs to put into quotation in a powershell terminal<br/>
-![image](https://github.com/user-attachments/assets/a6452dcf-7e67-48f6-a9b2-e454fb8bf28f) <br/>
-
 
 ### Ensuring VM can reach Host, and host can reach VM
-error: From 192.168.56.101 icmp_seq=3 Destination Host Unreachable <br/>
-  1) check your network adapter and ensure that the one you want to use is enabled: Control Panel\All Control Panel Items\Network Connections <br/>
-    ![image](https://github.com/user-attachments/assets/81c83f81-efc4-4355-ad9e-6ac3c8c76bc5) <br/><br/>
-  2)ensure that the VM network adapter chosen is the right one: <br/><br/>
-  ![image](https://github.com/user-attachments/assets/e5b4609a-113d-4e94-9b9a-7380da1121fe)  <br/><br/>
-  3)run command ip a on your VM terminal and make sure your eth0 on the VM  shows <br/><br/>
-  ![image](https://github.com/user-attachments/assets/9baf824d-05ff-4853-8dce-2277b52ec4ed) <br/><br/>
-  4)go to tools --> Host-Only Networks and ensure that the IP assigned to your adapter is the same as the one to your host: <br/><br/>
-  ![image](https://github.com/user-attachments/assets/941e3480-14ef-4d9e-bc00-f3af70801006) <br/><br/>
+When running the ping from the virtual machine , I received a " network not reachable " message from the terminal. That was because I had to either a) assign an ip to VM manually, or enable DHCP server to do it automatically. I enabled the DHCP server .
 
 ### Changing the double click behavior on Linux.
-  1) It took me maybe a few hours to figure that one out since when I was double-clicking, the file was opening with vim. I ended up changing the default application used by going to open-with --> dbus-launch. This forced the OS to launch a new D-bus session which allows the execution of the script.
-
-
-
+  1) When attempting to run the executable created in step 5, It took me maybe a few hours to get it to work because when I was clicking it, it would open with VIM, and not execute the code. I ended up changing the default application used by going to open-with --> dbus-launch. This forced the OS to launch a new D-bus session which allows the execution of the script.
 
 ## Lessons Learned
 
-Creating a safe hacking environment
-You would want to make sure you create a safe environment to since we will be working with real vulnerabilities. This project can go smoother with some basic knowledge of virtual machines and kali-linux. I highly recommend watching Network Chuck content.
-
-Update:
-Right now I am running into issues with creating a host only network on virtual box
-step 1:
-Download & Install virtual box:
-https://www.virtualbox.org/
-step 2:
-Download & Install Kali Linux
-
-Alright I just want to write a bunch of stuff on the journey around installing my first secure VM. I decided to install host only since for now, I did not need to access the internet. I thought it will be a straight forward process by following a tutorial, but I faced a few challenges:
--VM UI not showing multiple adapters in the network section:
-![image](https://github.com/user-attachments/assets/f5f915e0-7669-45df-81d6-44e39c880110)
--When trying to figure out how to add it, one solution was to go to file --> Host Network Manager. But when I went to file, here is what I found:
-![image](https://github.com/user-attachments/assets/cdd55b35-0d7d-40e7-be5a-e7c3e0f0df56)
-As you notice, no Host Network Manager
-
-At that moment, I realized my issue might very well be the virtualbox installation. I removed virtual box completely, and reinstalled it, and then I was finally able to see the network options. I still could bot find the  file --> Host Network Manager, but I found the Tools --> Properties options which contained everything I needed
-
-Commands used:
-To host files from host to VM
-1) locate folder where the files you want to share are stored
-2) open command prompt and run python -m http.server 8080 ( you need to have python installed)
-3) on the VM open terminal and run: wget http://192.168.56.1:8080/yourfile.txt
+I wish I can capture all the troubleshooting that happened during this project to clearly paint the picture of the learning journey of a SOC analyst. I had to do the installation steps 2 times to clearly capture the right steps. As a lesson, Documenting steps along the way in a journal-style approach will be something I will do more often as it helps with debugging, backtracking, and remembering the things to avoid.
 
 
 sources:
