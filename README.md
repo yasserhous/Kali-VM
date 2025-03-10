@@ -17,6 +17,7 @@ Then I needed to find tutorials that demonstrate the execution of a malware on a
 
 To visualize it, we will write the function inside an executable, followed by some drama by having a pop up that says " Gotcha ! you're system will crash now " 
 
+image 1
 ![forkbomb](https://github.com/user-attachments/assets/d53f5be5-563d-42fc-8301-d20f8435b0f3)
 
 ## Step By Step Setup
@@ -40,6 +41,7 @@ A **Host-Only Network Adapter** should be visible in **Windows network settings*
 This confirms the successful setup of VirtualBox's networking configuration.  
 
 ---
+image 2
 ![image](https://github.com/user-attachments/assets/9de93a03-bc98-43ec-a518-74b53a31f501) <br/>
 ### 2) Install Kali Linux distribution
 #### 2.1) visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab. This download should take a few minutes as well.
@@ -47,14 +49,13 @@ This confirms the successful setup of VirtualBox's networking configuration.
 #### 3) Follow the Kali Linux documentation to add the operating system on virtualbox. https://www.kali.org/docs/virtualization/import-premade-virtualbox/. My virtualbox manager did not look exactly like the one displayed in the documentation, but I managed to find the add option by going to machine --> add. 
 ### 4) Setup the host only network 
 #### 4.1) By default, your newly added Kali Linux OS might not be connected to the right network adapter. The goal is to connect it to the host-only network to create an isolated secure environment. Your VM will be able to communicate with the host or other VMs , but not to the outside world. Since the intention is to use this VM for malware analysis, we want to minimize the risk for unintended infections spreading on the network. To ensure the right network adapter is selected, go to settings --> Network --> choose the adapter that is enabled --> change the "attached to" field to "Host-only Adapter" and press Ok. Once you run your VM, you can verify it the adapter kicked in by trying to access the internet from the VM. you should not be able to do so.
-#### 4.2) We need to ensure that our VM can communicate with our host, and we achieve this by pinging from host to VM, and from VM to host. the ip of the VM can be found on virtual box by going to Tools --> Properties and selecting the right adapter. The ip address should be displayed at the bottom (see picture below). First use the windows host terminal and write the following command: Ping [ip address of VM]. If the terminal outputs replies, it means that the host is able to communicate with the VM. Next, pin the host ip of th  <br/>
+#### 4.2) We need to ensure that our VM can communicate with our host, and we achieve this by pinging from host to VM, and from VM to host. the ip that the VM needs to use to reach the hos can be found on virtual box by going to Tools --> Properties and selecting the right adapter. The ip address should be displayed at the bottom (see image 3 below).
+#### 4.3) At the same place, enable the DHCP server in order to have an ip automatically assigned to the VM. The option to enable can be found under the DHCP Server tab. Once it is enabled, you will find new ips assigned as lower bound and upper bound for all the VMs on Virtualbox
+#### 4.4) to find it the ip assigned to the VM, open the terminal on Kali linux and run the command: ip a. the ip should show next to inet.
+#### 4.5) Ping the VM from the host using the ip address found in 4.4. If it works the terminal will output replies. Also Ping the host from the VM using the ip address found in 4.2. If it works, the terminal will output replies.
+
+image 3
 ![image](https://github.com/user-attachments/assets/bd3380f5-d98a-46ea-a593-a8edeb233eca) <br/>
-
-
-
-
-
-### 5) verify that your vm is setup properly.
 
 ## Running the Fork Bomb
 ### 1) Create a new file on Linux and write the following code:
