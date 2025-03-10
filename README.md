@@ -11,7 +11,7 @@ I faced multiple technical challenges and resolved them through troubleshooting,
 
 Ultimately, the final test would be to execute malware, investigate pcap files, all in a safe and isolated environment
 
-It look me some time to finalize the host only network setup for my virtualbox because I ran into some configuration issues(see troubleshooting steps), but eventually I was able to set it up such as 1) my VM can communicate with my host and I can share a file(so I can share the malware zip), and 2) my VM cannot access the internet. 
+It took me some time to finalize the host only network setup for my virtualbox because I ran into some configuration issues(see troubleshooting steps), but eventually I was able to set it up such that my virtual machine can communicate with the host, while being isolated from the network. Then I was able to write a forkbomb and run it to study the impact of a Denial Of Service(DOS) attack.
 
 Then I needed to find tutorials that demonstrate the execution of a malware on a virtual machine. I did not find many resources online, but I did find a website I can download real malware samples: https://bazaar.abuse.ch/browse/. For this first lab, I decided to go for a fork bomb A.K.A rabbit virus. Fork bombs are a type DOS attack(Denial of Service) Leverages Linux's concept called forking because each function call spawns two additional processes and it does that exponentially. A fork bomb crashes the system by exhausting the its resources. the operating system because overwhelmed with all the processes created by the program and can no longer respond.
 
