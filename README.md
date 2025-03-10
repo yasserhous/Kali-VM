@@ -5,7 +5,7 @@ As you are progressing into this project, know that you will face challenges tha
 
 # Secure Virtual Envrionment for Malware analysis
 ## OVERVIEW
-I successfully built a secure and isolated Kali Linux VM inside VirtualBox to serve as a safe environment for penetration testing and malware analysis.
+I successfully built a secure and isolated Kali Linux virtual machine inside VirtualBox to serve as a safe environment for malware analysis.
 This project involved configuring an isolated network on a virtual machine using Kali linux and virtualbox, creating a forkbomb malware, and observing the impact.
 I faced multiple technical challenges and resolved them through troubleshooting, and patience.
 
