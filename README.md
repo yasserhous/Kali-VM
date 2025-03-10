@@ -20,10 +20,26 @@ To visualize it, we will write the function inside an executable, followed by so
 ![forkbomb](https://github.com/user-attachments/assets/d53f5be5-563d-42fc-8301-d20f8435b0f3)
 
 ## Step By Step Setup
-### 1) Install VirtualBox
-#### 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment, therefore we select Windows hosts. The download can take a few minutes
-#### 1.2) Run the installer. For the purpose of this lab, you can install using the default settings. For the purpose of this lab, it is important not to remove the virtual box host-only Networking from the setup because this is the network configuration we will need to prevent the virtual machine from having access to the internet.
-#### 1.3) When finishing installing you should be able to see a newly created host-only network adapter in your windows network settings <br/>
+##  1) Installation of VirtualBox  
+
+###  Step 1.1: Download VirtualBox  
+Visit [VirtualBox's official website](https://www.virtualbox.org/) and navigate to the **"Download"** section.  
+Select the appropriate executable based on the operating system.  
+
+- Since this lab is conducted in a **Windows environment**, select **"Windows Hosts"**.  
+- The download process may take a few minutes.  
+
+###  Step 1.2: Install VirtualBox  
+1. Run the installer and proceed with the **default settings**.  
+2. **Do not remove the "VirtualBox Host-Only Networking" option** during installation.  
+   - This setting is required to ensure the **virtual machine remains isolated from the internet**.  
+
+###  Step 1.3: Verify Installation  
+After installation is complete:  
+A **Host-Only Network Adapter** should be visible in **Windows network settings**.  
+This confirms the successful setup of VirtualBox's networking configuration.  
+
+---
 ![image](https://github.com/user-attachments/assets/9de93a03-bc98-43ec-a518-74b53a31f501) <br/>
 ### 2) Install Kali Linux distribution
 #### 2.1) visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab. This download should take a few minutes as well.
@@ -31,7 +47,10 @@ To visualize it, we will write the function inside an executable, followed by so
 #### 3) Follow the Kali Linux documentation to add the operating system on virtualbox. https://www.kali.org/docs/virtualization/import-premade-virtualbox/. My virtualbox manager did not look exactly like the one displayed in the documentation, but I managed to find the add option by going to machine --> add. 
 ### 4) Setup the host only network 
 #### 4.1) By default, your newly added Kali Linux OS might not be connected to the right network adapter. The goal is to connect it to the host-only network to create an isolated secure environment. Your VM will be able to communicate with the host or other VMs , but not to the outside world. Since the intention is to use this VM for malware analysis, we want to minimize the risk for unintended infections spreading on the network. To ensure the right network adapter is selected, go to settings --> Network --> choose the adapter that is enabled --> change the "attached to" field to "Host-only Adapter" and press Ok. Once you run your VM, you can verify it the adapter kicked in by trying to access the internet from the VM. you should not be able to do so.
-#### 4.2) We need to ensure that our VM can communicate with our host, and we achieve this by pinging from host to VM, and from VM to host. the ip of the VM can be found on virtual box by going to Tools --> Properties and selecting the right adapter. The ip address should be displayed at the bottom
+#### 4.2) We need to ensure that our VM can communicate with our host, and we achieve this by pinging from host to VM, and from VM to host. the ip of the VM can be found on virtual box by going to Tools --> Properties and selecting the right adapter. The ip address should be displayed at the bottom <br/>
+![image](https://github.com/user-attachments/assets/bd3380f5-d98a-46ea-a593-a8edeb233eca) <br/>
+
+
 
 
 ### 5) verify that your vm is setup properly.
