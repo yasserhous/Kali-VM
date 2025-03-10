@@ -1,5 +1,7 @@
 *DISCLOSURE* This repository is currently in progress. I use it to document my progress. 
 
+Words of Wisdom
+As you are progressing into this project, know that you will face challenges that I did not face. Do not fear those challenges, as they will help you learn.
 
 # Secure Virtual Envrionment for Malware analysis
 ## OVERVIEW
@@ -22,12 +24,9 @@ To visualize it, we will write the function inside an executable, followed by so
 #### 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment, therefore we select Windows hosts. The download can take a few minutes
 #### 1.2) Run the installer. For the purpose of this lab, you can install using the default settings. For the purpose of this lab, it is important not to remove the virtual box host-only Networking from the setup because this is the network configuration we will need to prevent the virtual machine from having access to the internet.
 ### 2) Install Kali Linux distribution
-#### 2.1) visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab.
+#### 2.1) visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab. This download should take a few minutes as well.
 #### 2.2) unzip the package at the location of your choice, but note that location as the kali linux operating system will be added to your VirtualBox
-### 3) Ensure your Kali Linux download is the correct file by comparing the hash of your vdi file with the hash provided on the website
-#### 3.2) open Powershell on your windows and write the following command: Get-FileHash "[path to your vdi file].vdi" -Algorithm SHA256. The terminal will output a long hash value. this value should be compared to the checksum value on your Kali linux --> see image below:
-![image](https://github.com/user-attachments/assets/e387ffb6-f5cc-4220-8e3c-9fb6132bef03)
-#### 3.3) Follow the Kali Linux documentation to add the operating system https://www.kali.org/docs/virtualization/import-premade-virtualbox/
+#### 3) Follow the Kali Linux documentation to add the operating system on virtualbox. https://www.kali.org/docs/virtualization/import-premade-virtualbox/. My virtualbox manager did not look exactly like the one displayed in the documentation, but I managed to find the add option by going to machine --> add. 
 ### 4) Setup the host only network 
 ### 5) verify that your vm is setup properly.
 
@@ -38,6 +37,12 @@ https://github.com/yasserhous/Kali-VM/blob/e39436b2335a17c2e605a32b0fd412f73441a
 
 
 ## Troubleshooting
+
+### When trying to find the file hash for the Kali vdi file, I was not able to CD into the directory
+I searched and found that when a folder has a space in it on windows, it needs to put into quotation in a powershell terminal<br/>
+![image](https://github.com/user-attachments/assets/a6452dcf-7e67-48f6-a9b2-e454fb8bf28f) <br/>
+
+
 ### Ensuring VM can reach Host, and host can reach VM
 error: From 192.168.56.101 icmp_seq=3 Destination Host Unreachable <br/>
   1) check your network adapter and ensure that the one you want to use is enabled: Control Panel\All Control Panel Items\Network Connections <br/>
