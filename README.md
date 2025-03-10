@@ -6,10 +6,10 @@ As you are progressing into this project, know that you will face challenges tha
 # Secure Virtual Envrionment for Malware analysis
 ## OVERVIEW
 I successfully built a secure and isolated Kali Linux VM inside VirtualBox to serve as a safe environment for penetration testing and malware analysis.
-This project involved configuring network isolation, enforcing firewall rules, and enabling secure file transfers between the host and VM.
-I faced multiple technical challenges and resolved them through troubleshooting, Linux networking, and firewall management.
+This project involved configuring an isolated network on a virtual machine using Kali linux and virtualbox, creating a forkbomb malware, and observing the impact.
+I faced multiple technical challenges and resolved them through troubleshooting, and patience.
 
-Ultimately, the final test would be to execute some malware on my virtual machine, and cross my fingers that the setup was done properly
+Ultimately, the final test would be to execute malware, investigate pcap files, all in a safe and isolated environment
 
 It look me some time to finalize the host only network setup for my virtualbox because I ran into some configuration issues(see troubleshooting steps), but eventually I was able to set it up such as 1) my VM can communicate with my host and I can share a file(so I can share the malware zip), and 2) my VM cannot access the internet. 
 
@@ -30,7 +30,10 @@ To visualize it, we will write the function inside an executable, followed by so
 #### 2.2) unzip the package at the location of your choice, but note that location as the kali linux operating system will be added to your VirtualBox
 #### 3) Follow the Kali Linux documentation to add the operating system on virtualbox. https://www.kali.org/docs/virtualization/import-premade-virtualbox/. My virtualbox manager did not look exactly like the one displayed in the documentation, but I managed to find the add option by going to machine --> add. 
 ### 4) Setup the host only network 
-#### 4.1) By default, your newly added Kali Linux OS might not be connected to the right network adapter. The goal is to connect it to the host-only network to create an isolated secure environment. Your VM will be able to communicate with the host or other VMs , but not to the outside world. Since the intention is to use this VM for malware analysis, we want to minimize the risk for unintended infections spreading on the network
+#### 4.1) By default, your newly added Kali Linux OS might not be connected to the right network adapter. The goal is to connect it to the host-only network to create an isolated secure environment. Your VM will be able to communicate with the host or other VMs , but not to the outside world. Since the intention is to use this VM for malware analysis, we want to minimize the risk for unintended infections spreading on the network. To ensure the right network adapter is selected, go to settings --> Network --> choose the adapter that is enabled --> change the "attached to" field to "Host-only Adapter" and press Ok. Once you run your VM, you can verify it the adapter kicked in by trying to access the internet from the VM. you should not be able to do so.
+#### 4.2) We need to ensure that our VM can communicate with our host, and we achieve this by pinging from host to VM, and from VM to host. the ip of the VM can be found on virtual box by going to Tools --> Properties and selecting the right adapter. The ip address should be displayed at the bottom
+
+
 ### 5) verify that your vm is setup properly.
 
 ## Running the Fork Bomb
@@ -95,3 +98,5 @@ To host files from host to VM
 sources:
 Network Chuck how to build a HACKING lab : https://www.youtube.com/watch?v=mvsiuLzpx2E 
 Fork Bomb: https://www.youtube.com/watch?v=RhtjGp7oMvE
+Host-only network: https://medium.com/@LDS_Cyber/set-up-a-host-only-malware-testing-environment-in-esxi-ec3522a3f8a5#:~:text=Creating%20a%20host%2Donly%20or,the%20evaluation%20of%20malicious%20software.
+
