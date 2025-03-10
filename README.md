@@ -23,11 +23,14 @@ To visualize it, we will write the function inside an executable, followed by so
 ### 1) Install VirtualBox
 #### 1.1) visit https://www.virtualbox.org/ and click on Download , and then choose the right executable based on your operating system. This lab will be done on a windows environment, therefore we select Windows hosts. The download can take a few minutes
 #### 1.2) Run the installer. For the purpose of this lab, you can install using the default settings. For the purpose of this lab, it is important not to remove the virtual box host-only Networking from the setup because this is the network configuration we will need to prevent the virtual machine from having access to the internet.
+#### 1.3) When finishing installing you should be able to see a newly created host-only network adapter in your windows network settings <br/>
+![image](https://github.com/user-attachments/assets/9de93a03-bc98-43ec-a518-74b53a31f501) <br/>
 ### 2) Install Kali Linux distribution
 #### 2.1) visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab. This download should take a few minutes as well.
 #### 2.2) unzip the package at the location of your choice, but note that location as the kali linux operating system will be added to your VirtualBox
 #### 3) Follow the Kali Linux documentation to add the operating system on virtualbox. https://www.kali.org/docs/virtualization/import-premade-virtualbox/. My virtualbox manager did not look exactly like the one displayed in the documentation, but I managed to find the add option by going to machine --> add. 
 ### 4) Setup the host only network 
+#### 4.1) By default, your newly added Kali Linux OS might not be connected to the right network adapter. The goal is to connect it to the host-only network to create an isolated secure environment. Your VM will be able to communicate with the host or other VMs , but not to the outside world. Since the intention is to use this VM for malware analysis, we want to minimize the risk for unintended infections spreading on the network
 ### 5) verify that your vm is setup properly.
 
 ## Running the Fork Bomb
