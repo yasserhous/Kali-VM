@@ -1,124 +1,83 @@
-title: "Secure Virtual Environment for Malware Analysis"
+*DISCLOSURE* This repository is currently in progress. I use it to document my progress. 
 
-overview: |
-  This repository documents the development of a secure and isolated Kali Linux virtual machine within VirtualBox, designed as a controlled environment for malware analysis.
+Words of Wisdom
+As you are progressing into this project, know that you will face challenges that I did not face. Do not fear those challenges, as they will help you learn.
 
-  The project involved:
-    - Configuring an isolated network within VirtualBox
-    - Creating and executing a fork bomb malware to observe system impact
-    - Troubleshooting networking issues to ensure controlled communication between the VM and host
-    - Establishing a secure environment for analyzing malicious files
+# Secure Virtual Envrionment for Malware analysis
+## OVERVIEW
+I successfully built a secure and isolated Kali Linux virtual machine inside VirtualBox to serve as a safe environment for malware analysis.
+This project involved configuring an isolated network on a virtual machine using Kali linux and virtualbox, creating a forkbomb malware, and observing the impact.
+I faced multiple technical challenges and resolved them through troubleshooting, and patience.
 
-  This environment was built to safely execute malware, analyze packet captures (PCAP files), and study system behavior, all within a controlled and isolated virtualized setup.
+Ultimately, the final test would be to execute malware, investigate pcap files, all in a safe and isolated environment
 
-key_features:
-  - Host-Only Networking Setup: Ensures VM isolation while maintaining communication with the host machine
-  - Fork Bomb Execution and Analysis: Simulates Denial of Service (DoS) attacks by overwhelming system resources
-  - Malware Handling in a Secure Lab: Prepares the system for safe execution of real-world malware samples
-  - Hands-on Troubleshooting: Includes detailed fixes for common VirtualBox networking issues
+It took me some time to finalize the host only network setup for my virtualbox because I ran into some configuration issues(see troubleshooting steps), but eventually I was able to set it up such that my virtual machine can communicate with the host, while being isolated from the network. Then I was able to write a forkbomb and run it to study the impact of a Denial Of Service(DOS) attack.
 
-project_setup:
-  step_1_install_virtualbox:
-    download: "Download VirtualBox from the [official website](https://www.virtualbox.org/)."
-    install: |
-      Install VirtualBox with default settings.
-      - Do not remove the "VirtualBox Host-Only Networking" option, as it is required for network isolation.
-    verify_installation: |
-      Open Windows Network Settings and confirm that the Host-Only Network Adapter is present.
-    example_image: "![VirtualBox Network Adapter](https://github.com/user-attachments/assets/9de93a03-bc98-43ec-a518-74b53a31f501)"
+Then I needed to find tutorials that demonstrate the execution of a malware on a virtual machine. I did not find many resources online, but I did find a website I can download real malware samples: https://bazaar.abuse.ch/browse/. For this first lab, I decided to go for a fork bomb A.K.A rabbit virus. Fork bombs are a type DOS attack(Denial of Service) Leverages Linux's concept called forking because each function call spawns two additional processes and it does that exponentially. A fork bomb crashes the system by exhausting the its resources. the operating system because overwhelmed with all the processes created by the program and can no longer respond.
 
-  step_2_install_kali_linux:
-    download: "Download the Kali Linux VirtualBox image from the [official site](https://www.kali.org/get-kali/#kali-virtual-machines)."
-    extract: "Extract the package to a selected directory."
-    import: |
-      Import the Kali Linux image into VirtualBox:
-      - Navigate to Machine → Add within VirtualBox.
-      - Follow the [Kali Linux VirtualBox import guide](https://www.kali.org/docs/virtualization/import-premade-virtualbox/).
+To visualize it, we will write the function inside an executable, followed by some drama by having a pop up that says " Gotcha ! you're system will crash now " 
 
-  step_3_configure_host_only_networking:
-    objective: |
-      By default, Kali Linux may not be connected to the correct network adapter. 
-      The goal is to connect it to the Host-Only Network, ensuring:
-      - VM to Host communication
-      - No external internet access
+image 1
+![forkbomb](https://github.com/user-attachments/assets/d53f5be5-563d-42fc-8301-d20f8435b0f3)
 
-    configure_virtualbox_adapter: |
-      1. Open VirtualBox → Select the Kali VM → Settings → Network
-      2. Choose the enabled adapter → Set "Attached to" Host-Only Adapter
-      3. Click OK and start the VM.
-      4. Verify Isolation by attempting to access the internet from the VM (should be blocked).
+## Step By Step Setup
+##  1) Installation of VirtualBox  
 
-    enable_dhcp: |
-      1. Navigate to Tools → Properties → Select the Host-Only Adapter
-      2. Enable the DHCP Server
-      3. The DHCP settings should now display assigned IP ranges for VirtualBox VMs.
+###  Step 1.1: Download VirtualBox  
+Visit [VirtualBox's official website](https://www.virtualbox.org/) and navigate to the **"Download"** section.  
+Select the appropriate executable based on the operating system.  
 
-    example_image: "![Host-Only Adapter](https://github.com/user-attachments/assets/bd3380f5-d98a-46ea-a593-a8edeb233eca)"
+- Since this lab is conducted in a **Windows environment**, select **"Windows Hosts"**.  
+- The download process may take a few minutes.  
 
-    verify_connectivity:
-      find_vm_ip: |
-        Run the following command inside the VM:
-        ```bash
-        ip a
-        ```
-      ping_vm_from_host: |
-        Run the following command on the host:
-        ```powershell
-        ping <VM_IP>
-        ```
-      ping_host_from_vm: |
-        Run the following command inside the VM:
-        ```bash
-        ping <Host_IP>
-        ```
-      success_criteria: "If both pings succeed, the configuration is correct."
+###  Step 1.2: Install VirtualBox  
+1. Run the installer and proceed with the **default settings**.  
+2. **Do not remove the "VirtualBox Host-Only Networking" option** during installation.  
+   - This setting is required to ensure the **virtual machine remains isolated from the internet**.  
 
-running_fork_bomb_attack:
-  description: |
-    The fork bomb (also called a Rabbit Virus) is a Denial of Service (DoS) attack that exploits Linux process forking. 
-    The function continuously spawns new processes, overloading system resources and leading to a system crash.
+###  Step 1.3: Verify Installation  
+After installation is complete:  
+A **Host-Only Network Adapter** should be visible in **Windows network settings**.  
+This confirms the successful setup of VirtualBox's networking configuration.  
 
-  fork_bomb_script: "[Fork Bomb Script](https://github.com/yasserhous/Kali-VM/blob/e39436b2335a17c2e605a32b0fd412f73441a6ea/forkbomb.sh#L1-L10)"
+---
+image 2
+![image](https://github.com/user-attachments/assets/9de93a03-bc98-43ec-a518-74b53a31f501) <br/>
+### 2) Install Kali Linux distribution
+#### 2.1) visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab. This download should take a few minutes as well.
+#### 2.2) unzip the package at the location of your choice, but note that location as the kali linux operating system will be added to your VirtualBox
+#### 3) Follow the Kali Linux documentation to add the operating system on virtualbox. https://www.kali.org/docs/virtualization/import-premade-virtualbox/. My virtualbox manager did not look exactly like the one displayed in the documentation, but I managed to find the add option by going to machine --> add. 
+### 4) Setup the host only network 
+#### 4.1) By default, your newly added Kali Linux OS might not be connected to the right network adapter. The goal is to connect it to the host-only network to create an isolated secure environment. Your VM will be able to communicate with the host or other VMs , but not to the outside world. Since the intention is to use this VM for malware analysis, we want to minimize the risk for unintended infections spreading on the network. To ensure the right network adapter is selected, go to settings --> Network --> choose the adapter that is enabled --> change the "attached to" field to "Host-only Adapter" and press Ok. Once you run your VM, you can verify it the adapter kicked in by trying to access the internet from the VM. you should not be able to do so.
+#### 4.2) We need to ensure that our VM can communicate with our host, and we achieve this by pinging from host to VM, and from VM to host. the ip that the VM needs to use to reach the hos can be found on virtual box by going to Tools --> Properties and selecting the right adapter. The ip address should be displayed at the bottom (see image 3 below).
+#### 4.3) At the same place, enable the DHCP server in order to have an ip automatically assigned to the VM. The option to enable can be found under the DHCP Server tab. Once it is enabled, you will find new ips assigned as lower bound and upper bound for all the VMs on Virtualbox
+#### 4.4) to find it the ip assigned to the VM, open the terminal on Kali linux and run the command: ip a. the ip should show next to inet.
+#### 4.5) Ping the VM from the host using the ip address found in 4.4. If it works the terminal will output replies. Also Ping the host from the VM using the ip address found in 4.2. If it works, the terminal will output replies.
 
-  pop_up_warning: |
-    To enhance the experience, a pop-up warning message was added before execution:
-    ```bash
-    zenity --error --text="System Failure Detected! Your system is about to crash!" --title="Security Warning" &
-    sleep 3
-    :(){ :|:& };:
-    ```
-    This simulates a real-world cyber attack scenario.
+image 3
+![image](https://github.com/user-attachments/assets/bd3380f5-d98a-46ea-a593-a8edeb233eca) <br/>
 
-  example_image: "![Fork Bomb](https://github.com/user-attachments/assets/d53f5be5-563d-42fc-8301-d20f8435b0f3)"
+## Running the Fork Bomb
+### 5) Create a new file on Linux and write the following code:
 
-troubleshooting:
-  vm_host_communication:
-    issue: "Network Unreachable when attempting to ping the host from the VM."
-    fix: "Enable DHCP or manually assign an IP to the VM."
+https://github.com/yasserhous/Kali-VM/blob/e39436b2335a17c2e605a32b0fd412f73441a6ea/forkbomb.sh#L1-L10
 
-  linux_executable_behavior:
-    issue: "Executable scripts open in `vim` instead of running."
-    fix: "Modify Open With settings to use `dbus-launch`, ensuring execution."
 
-lessons_learned:
-  - Configuring secure networking for malware analysis
-  - Building an isolated VirtualBox environment
-  - Troubleshooting networking and execution issues in Linux
-  - Documenting steps effectively for reproducibility
+## Troubleshooting
 
-  key_takeaway: "Maintaining a detailed project log significantly improves troubleshooting efficiency and helps track progress over time."
 
-references_and_resources:
-  - "[VirtualBox Networking Guide](https://medium.com/@LDS_Cyber/set-up-a-host-only-malware-testing-environment-in-esxi-ec3522a3f8a5#:~:text=Creating%20a%20host%2Donly%20or,the%20evaluation%20of%20malicious%20software.)"
-  - "[Fork Bomb Attack Explanation](https://www.youtube.com/watch?v=RhtjGp7oMvE)"
-  - "[Setting Up a Hacking Lab](https://www.youtube.com/watch?v=mvsiuLzpx2E)"
-  - "[Real Malware Samples for Testing](https://bazaar.abuse.ch/browse/)"
+### Ensuring VM can reach Host, and host can reach VM
+When running the ping from the virtual machine , I received a " network not reachable " message from the terminal. That was because I had to either a) assign an ip to VM manually, or enable DHCP server to do it automatically. I enabled the DHCP server .
 
-next_steps:
-  - Expanding malware analysis beyond the fork bomb attack
-  - Investigating packet captures (PCAPs) from executed malware
-  - Implementing security monitoring tools within the VM
+### Changing the double click behavior on Linux.
+  1) When attempting to run the executable created in step 5, It took me maybe a few hours to get it to work because when I was clicking it, it would open with VIM, and not execute the code. I ended up changing the default application used by going to open-with --> dbus-launch. This forced the OS to launch a new D-bus session which allows the execution of the script.
 
-about_repository:
-  status: "This repository is currently a work in progress. It serves as a technical portfolio project documenting the development of a secure malware analysis lab."
-  contribution: "Contributions, suggestions, and feedback are welcome."
+## Lessons Learned
+
+I wish I can capture all the troubleshooting that happened during this project to clearly paint the picture of the learning journey of a SOC analyst. I had to do the installation steps 2 times to clearly capture the right steps. As a lesson, Documenting steps along the way in a journal-style approach will be something I will do more often as it helps with debugging, backtracking, and remembering the things to avoid.
+
+
+sources:
+Network Chuck how to build a HACKING lab : https://www.youtube.com/watch?v=mvsiuLzpx2E 
+Fork Bomb: https://www.youtube.com/watch?v=RhtjGp7oMvE
+Host-only network: https://medium.com/@LDS_Cyber/set-up-a-host-only-malware-testing-environment-in-esxi-ec3522a3f8a5#:~:text=Creating%20a%20host%2Donly%20or,the%20evaluation%20of%20malicious%20software.
