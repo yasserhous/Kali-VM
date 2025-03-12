@@ -43,15 +43,53 @@ This confirms the successful setup of VirtualBox's networking configuration.
 ---
 image 2
 ![image](https://github.com/user-attachments/assets/9de93a03-bc98-43ec-a518-74b53a31f501) <br/>
-### 2) Install Kali Linux distribution
-#### 2.1) visit https://www.kali.org/get-kali/#kali-virtual-machines and install the VirtualBox version, because that's the virtualization software that we will use in this lab. This download should take a few minutes as well.
-#### 2.2) unzip the package at the location of your choice, but note that location as the kali linux operating system will be added to your VirtualBox
-#### 3) Follow the Kali Linux documentation to add the operating system on virtualbox. https://www.kali.org/docs/virtualization/import-premade-virtualbox/. My virtualbox manager did not look exactly like the one displayed in the documentation, but I managed to find the add option by going to machine --> add. 
-### 4) Setup the host only network 
-#### 4.1) By default, your newly added Kali Linux OS might not be connected to the right network adapter. The goal is to connect it to the host-only network to create an isolated secure environment. Your VM will be able to communicate with the host or other VMs , but not to the outside world. Since the intention is to use this VM for malware analysis, we want to minimize the risk for unintended infections spreading on the network. To ensure the right network adapter is selected, go to settings --> Network --> choose the adapter that is enabled --> change the "attached to" field to "Host-only Adapter" and press Ok. Once you run your VM, you can verify it the adapter kicked in by trying to access the internet from the VM. you should not be able to do so.
-#### 4.2) We need to ensure that our VM can communicate with our host, and we achieve this by pinging from host to VM, and from VM to host. the ip that the VM needs to use to reach the hos can be found on virtual box by going to Tools --> Properties and selecting the right adapter. The ip address should be displayed at the bottom (see image 3 below).
-#### 4.3) At the same place, enable the DHCP server in order to have an ip automatically assigned to the VM. The option to enable can be found under the DHCP Server tab. Once it is enabled, you will find new ips assigned as lower bound and upper bound for all the VMs on Virtualbox
-#### 4.4) to find it the ip assigned to the VM, open the terminal on Kali linux and run the command: ip a. the ip should show next to inet.
+
+## Step 2: Install the Kali Linux Distribution  
+
+### 2.1 Download Kali Linux  
+Visit the [official Kali Linux website](https://www.kali.org/get-kali/#kali-virtual-machines) and download the **VirtualBox version**, as VirtualBox will be used as the virtualization platform for this lab. The download process may take a few minutes.  
+
+### 2.2 Extract the Kali Linux Package  
+Once the download is complete, extract the package to a preferred location. Take note of this location, as it will be required when importing the Kali Linux operating system into VirtualBox.  
+
+### 2.3 Import Kali Linux into VirtualBox  
+Follow the [Kali Linux VirtualBox import documentation](https://www.kali.org/docs/virtualization/import-premade-virtualbox/) to add the operating system to VirtualBox.  
+
+If the **VirtualBox Manager interface differs from the one shown in the documentation**, the Kali Linux virtual machine can still be added by navigating to:  
+**Machine → Add**, then selecting the extracted Kali Linux `.vbox` file.  
+
+---
+
+## Step 3: Configure the Host-Only Network  
+
+### 3.1 Ensure the VM is Connected to the Correct Network Adapter  
+By default, the newly imported **Kali Linux VM may not be assigned to the correct network adapter**. The objective is to configure it to use the **Host-Only Network**, which creates an isolated and secure environment.  
+
+- This configuration allows the VM to communicate **only with the host machine and other virtual machines** but **not with the internet**, reducing the risk of unintended malware spreading.  
+- To configure this setting:  
+  1. Open **VirtualBox** and select the **Kali Linux VM**.  
+  2. Navigate to **Settings → Network**.  
+  3. Identify the enabled network adapter and set **"Attached to"** as **Host-Only Adapter**.  
+  4. Click **OK** to save the changes.  
+  5. Start the VM and attempt to access the internet—there should be **no internet connectivity**, confirming successful isolation.  
+
+---
+
+### 3.2 Verify VM-to-Host Communication  
+To ensure the VM can communicate with the host machine, perform a **ping test** in both directions.  
+
+#### 3.2.1 Identify the Host-Only Adapter’s IP Address  
+- In **VirtualBox**, go to **Tools → Properties**, select the appropriate network adapter, and locate the **IP address displayed at the bottom**.  
+
+#### 3.2.2 Enable the DHCP Server  
+- In the **same settings panel**, navigate to the **DHCP Server** tab.  
+- Enable the **DHCP Server** to allow the VM to obtain an IP address automatically.  
+- Once enabled, the **lower and upper IP bounds** for all VMs will be assigned dynamically.  
+
+#### 3.2.3 Find the VM’s Assigned IP Address  
+- Open a terminal within Kali Linux and execute:  
+  ```bash
+  ip a
 #### 4.5) Ping the VM from the host using the ip address found in 4.4. If it works the terminal will output replies. Also Ping the host from the VM using the ip address found in 4.2. If it works, the terminal will output replies.
 
 image 3
