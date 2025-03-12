@@ -79,7 +79,7 @@ By default, the newly imported **Kali Linux VM may not be assigned to the correc
 To ensure the VM can communicate with the host machine, perform a **ping test** in both directions.  
 
 #### 3.2.1 Identify the Host-Only Adapter’s IP Address  
-- In **VirtualBox**, go to **Tools → Properties**, select the appropriate network adapter, and locate the **IP address displayed at the bottom**.  
+- In **VirtualBox**, go to **Tools → Properties**, select the appropriate network adapter, and locate the **IP address displayed at the bottom**. (See image 3)  
 
 #### 3.2.2 Enable the DHCP Server  
 - In the **same settings panel**, navigate to the **DHCP Server** tab.  
@@ -92,7 +92,7 @@ To ensure the VM can communicate with the host machine, perform a **ping test** 
   ip a
 #### 4.5) Ping the VM from the host using the ip address found in 4.4. If it works the terminal will output replies. Also Ping the host from the VM using the ip address found in 4.2. If it works, the terminal will output replies.
 
-image 3
+image 3 <br/>
 ![image](https://github.com/user-attachments/assets/bd3380f5-d98a-46ea-a593-a8edeb233eca) <br/>
 
 ## Running the Fork Bomb
