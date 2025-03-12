@@ -1,7 +1,5 @@
-
-
-Words of Wisdom
-As you are progressing into this project, know that you will face challenges that I did not face. Do not fear those challenges, as they will help you learn.
+## 📜 Words of Wisdom  
+> *As you progress through this project, you will encounter challenges that I did not face. Do not fear those challenges—they are opportunities to learn and grow.*  
 
 # Secure Virtual Envrionment for Malware analysis
 ## OVERVIEW
