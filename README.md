@@ -80,7 +80,8 @@ To ensure the VM can communicate with the host machine, perform a **ping test** 
 
 #### 3.2.1 Identify the Host-Only Adapter’s IP Address  
 - In **VirtualBox**, go to **Tools → Properties**, select the appropriate network adapter, and locate the **IP address displayed at the bottom**. (See image 3)  
-
+image 3 <br/>
+![image](https://github.com/user-attachments/assets/bd3380f5-d98a-46ea-a593-a8edeb233eca) <br/>
 #### 3.2.2 Enable the DHCP Server  
 - In the **same settings panel**, navigate to the **DHCP Server** tab.  
 - Enable the **DHCP Server** to allow the VM to obtain an IP address automatically.  
@@ -90,10 +91,39 @@ To ensure the VM can communicate with the host machine, perform a **ping test** 
 - Open a terminal within Kali Linux and execute:  
   ```bash
   ip a
-#### 4.5) Ping the VM from the host using the ip address found in 4.4. If it works the terminal will output replies. Also Ping the host from the VM using the ip address found in 4.2. If it works, the terminal will output replies.
+### 3.3 Conduct a Ping Test  
 
-image 3 <br/>
-![image](https://github.com/user-attachments/assets/bd3380f5-d98a-46ea-a593-a8edeb233eca) <br/>
+To verify that the **host and VM can communicate**, perform a **ping test** in both directions.
+
+#### 3.3.1 Ping the VM from the Host  
+To check if the host can reach the VM:  
+
+1. Obtain the **IP address assigned to the VM** (found in [Step 3.2.3](#323-find-the-vms-assigned-ip-address)).  
+2. Run the following command on the **host machine**:  
+
+   ```powershell
+   ping <VM_IP>
+- If the connection is successful, the terminal will display ping replies similar to the following:
+  ```bash
+  Pinging 192.168.56.101 with 32 bytes of data:
+Reply from 192.168.56.101: bytes=32 time<1ms TTL=128
+Reply from 192.168.56.101: bytes=32 time<1ms TTL=128
+Reply from 192.168.56.101: bytes=32 time<1ms TTL=128
+
+#### 3.3.2 Ping the Host from the VM
+To check if the VM can reach the host:  
+
+1. Obtain the Host-Only Adapter IP Address (found in [Step 3.2.1](#321-find-the-vms-assigned-ip-address)).  
+2. Run the following command inside the Kali Linux VM terminal:
+
+   ```powershell
+   ping <Host_IP>
+- If the connection is successful, the terminal will display ping replies similar to the following:
+  ```bash
+PING 192.168.56.1 (192.168.56.1) 56(84) bytes of data.
+64 bytes from 192.168.56.1: icmp_seq=1 ttl=64 time=0.543 ms
+64 bytes from 192.168.56.1: icmp_seq=2 ttl=64 time=0.389 ms
+
 
 ## Running the Fork Bomb
 ### 5) Create a new file on Linux and write the following code:
