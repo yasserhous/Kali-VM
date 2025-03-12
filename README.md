@@ -79,7 +79,7 @@ By default, the newly imported **Kali Linux VM may not be assigned to the correc
 To ensure the VM can communicate with the host machine, perform a **ping test** in both directions.  
 
 #### 3.2.1 Identify the Host-Only Adapter’s IP Address  
-- In **VirtualBox**, go to **Tools → Properties**, select the appropriate network adapter, and locate the **IP address displayed at the bottom**. (See image 3)  
+- In **VirtualBox**, go to **Tools → Properties**, select the appropriate network adapter, and locate the **IP address displayed at the bottom** (See image below). <br/> 
 image 3 <br/>
 ![image](https://github.com/user-attachments/assets/bd3380f5-d98a-46ea-a593-a8edeb233eca) <br/>
 #### 3.2.2 Enable the DHCP Server  
@@ -130,22 +130,55 @@ To check if the VM can reach the host:
 
 https://github.com/yasserhous/Kali-VM/blob/e39436b2335a17c2e605a32b0fd412f73441a6ea/forkbomb.sh#L1-L10
 
+## Troubleshooting  
 
-## Troubleshooting
+### **Ensuring VM ↔ Host Communication**  
+If the **host and VM are unable to communicate**, follow these troubleshooting steps.
 
+#### **Issue: "Network Unreachable" when attempting to ping the host from the VM**  
+**Possible Causes & Solutions:**  
+- **The VM is not assigned an IP address.**  
+  -  **Solution:** Enable the **DHCP server** in VirtualBox or assign a **static IP manually**.  
+- **The Host-Only Adapter is misconfigured.**  
+  -  **Solution:** Verify that the VM is attached to the **correct Host-Only Adapter** under **VirtualBox → Settings → Network**.  
+---
 
-### Ensuring VM can reach Host, and host can reach VM
-When running the ping from the virtual machine , I received a " network not reachable " message from the terminal. That was because I had to either a) assign an ip to VM manually, or enable DHCP server to do it automatically. I enabled the DHCP server .
+### **Changing Double-Click Behavior on Linux**  
+If **double-clicking an executable script opens it in a text editor instead of running it**, adjust the execution settings.
 
-### Changing the double click behavior on Linux.
-  1) When attempting to run the executable created in step 5, It took me maybe a few hours to get it to work because when I was clicking it, it would open with VIM, and not execute the code. I ended up changing the default application used by going to open-with --> dbus-launch. This forced the OS to launch a new D-bus session which allows the execution of the script.
+#### **Issue: Script opens in Vim or a text editor instead of executing**  
+**Possible Causes & Solutions:**  
+- **The file lacks execution permissions.**  
+  - **Solution:** Grant execution permissions using:  
+    ```bash
+    chmod +x script.sh
+- **The script is not launching correctly from the file manager.**  
+  - **Solution:** Change the "Open With" application to `dbus-launch`:  
 
-## Lessons Learned
+---
 
-I wish I can capture all the troubleshooting that happened during this project to clearly paint the picture of the learning journey of a SOC analyst. I had to do the installation steps 2 times to clearly capture the right steps. As a lesson, Documenting steps along the way in a journal-style approach will be something I will do more often as it helps with debugging, backtracking, and remembering the things to avoid.
+## Lessons Learned  
 
+### **Key Takeaways from This Project**  
+This project provided valuable hands-on experience in:  
+- **Configuring secure networking** for malware analysis in a virtualized environment.  
+- **Building an isolated VirtualBox network** while troubleshooting connectivity issues.  
+- **Executing and analyzing the impact of a Denial-of-Service (DoS) attack** using a fork bomb.  
+- **Documenting technical procedures effectively** to improve reproducibility.  
 
-sources:
-Network Chuck how to build a HACKING lab : https://www.youtube.com/watch?v=mvsiuLzpx2E 
-Fork Bomb: https://www.youtube.com/watch?v=RhtjGp7oMvE
-Host-only network: https://medium.com/@LDS_Cyber/set-up-a-host-only-malware-testing-environment-in-esxi-ec3522a3f8a5#:~:text=Creating%20a%20host%2Donly%20or,the%20evaluation%20of%20malicious%20software.
+#### **Future Best Practices:**  
+- Maintaining a **detailed project log** significantly improves troubleshooting efficiency.  
+- Using a **journal-style documentation approach** aids in debugging, backtracking, and tracking progress over time.  
+
+---
+
+## References and Resources  
+
+The following resources were instrumental in setting up and troubleshooting the secure virtual environment:  
+
+- [VirtualBox Networking Guide](https://medium.com/@LDS_Cyber/set-up-a-host-only-malware-testing-environment-in-esxi-ec3522a3f8a5#:~:text=Creating%20a%20host%2Donly%20or,the%20evaluation%20of%20malicious%20software.)  
+- [Fork Bomb Attack Explanation](https://www.youtube.com/watch?v=RhtjGp7oMvE)  
+- [Setting Up a Hacking Lab](https://www.youtube.com/watch?v=mvsiuLzpx2E)  
+- [Real Malware Samples for Testing](https://bazaar.abuse.ch/browse/)  
+
+---
