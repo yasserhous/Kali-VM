@@ -41,7 +41,7 @@ A **Host-Only Network Adapter** should be visible in **Windows network settings*
 This confirms the successful setup of VirtualBox's networking configuration.  
 
 ---
-image 2
+image 2<br/>
 ![image](https://github.com/user-attachments/assets/9de93a03-bc98-43ec-a518-74b53a31f501) <br/>
 
 ## Step 2: Install the Kali Linux Distribution  
@@ -106,9 +106,9 @@ To check if the host can reach the VM:
 - If the connection is successful, the terminal will display ping replies similar to the following:
   ```bash
   Pinging 192.168.56.101 with 32 bytes of data:
-Reply from 192.168.56.101: bytes=32 time<1ms TTL=128
-Reply from 192.168.56.101: bytes=32 time<1ms TTL=128
-Reply from 192.168.56.101: bytes=32 time<1ms TTL=128
+  Reply from 192.168.56.101: bytes=32 time<1ms TTL=128
+  Reply from 192.168.56.101: bytes=32 time<1ms TTL=128
+  Reply from 192.168.56.101: bytes=32 time<1ms TTL=128
 
 #### 3.3.2 Ping the Host from the VM
 To check if the VM can reach the host:  
@@ -120,9 +120,9 @@ To check if the VM can reach the host:
    ping <Host_IP>
 - If the connection is successful, the terminal will display ping replies similar to the following:
   ```bash
-PING 192.168.56.1 (192.168.56.1) 56(84) bytes of data.
-64 bytes from 192.168.56.1: icmp_seq=1 ttl=64 time=0.543 ms
-64 bytes from 192.168.56.1: icmp_seq=2 ttl=64 time=0.389 ms
+   PING 192.168.56.1 (192.168.56.1) 56(84) bytes of data.
+   64 bytes from 192.168.56.1: icmp_seq=1 ttl=64 time=0.543 ms
+   64 bytes from 192.168.56.1: icmp_seq=2 ttl=64 time=0.389 ms
 
 
 ## Running the Fork Bomb
