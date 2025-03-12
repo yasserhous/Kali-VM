@@ -1,4 +1,4 @@
-*DISCLOSURE* This repository is currently in progress. I use it to document my progress. 
+
 
 Words of Wisdom
 As you are progressing into this project, know that you will face challenges that I did not face. Do not fear those challenges, as they will help you learn.
